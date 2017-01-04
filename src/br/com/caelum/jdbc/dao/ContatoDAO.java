@@ -101,6 +101,7 @@ public class ContatoDAO {
             stmt.execute();
             stmt.close();
         } catch (Exception e) {
+            throw new DAOException(e);
         }
     }
 }
