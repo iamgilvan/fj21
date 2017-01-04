@@ -1,7 +1,5 @@
 package br.com.caelum.jdbc.dao;
 
-import br.com.caelum.jdbc.ConnectionFactory;
-import br.com.caelum.jdbc.modelo.Contato;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -9,6 +7,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import br.com.caelum.jdbc.ConnectionFactory;
+import br.com.caelum.jdbc.exception.DAOException;
+import br.com.caelum.jdbc.modelo.Contato;
 
 public class ContatoDAO {
     private Connection connection;
@@ -37,7 +39,7 @@ public class ContatoDAO {
             stmt.execute();
             stmt.close();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new DAOException(e);
         }
     }
     
@@ -67,7 +69,7 @@ public class ContatoDAO {
             stmt.close();
             return contatos;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new DAOException(e);
                     
         }
     }
